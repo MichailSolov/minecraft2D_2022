@@ -1,5 +1,5 @@
 import pygame
-from platform import Platform
+from create_platform import Platform
 import OCF
 
 config = OCF.open_conf_file()
