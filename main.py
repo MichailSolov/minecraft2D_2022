@@ -34,10 +34,23 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game.mainloop = False
+
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
+                player.left = True
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_d:
+                player.right = True
+
+            if event.type == pygame.KEYUP and event.key == pygame.K_a:
+                player.left = False
+            if event.type == pygame.KEYUP and event.key == pygame.K_d:
+                player.right = False
+
         for obj in game.surface_all:
-            screen.blit(obj.image, (obj.rect.centerx - 20, obj.rect.centery - 20))
+            screen.blit(obj.image, (obj.rect.x, obj.rect.y))
         for obj in game.player_all:
-            screen.blit(obj.image, (obj.rect.centerx - 20, obj.rect.centery - 20))
+            screen.blit(obj.image, (obj.rect.x, obj.rect.y))
+
+        player.update()
         pygame.display.update()
 
 
